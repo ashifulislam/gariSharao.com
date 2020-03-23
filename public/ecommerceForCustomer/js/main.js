@@ -3,8 +3,8 @@
 
   // NAVIGATION
   var responsiveNav = $('#responsive-nav'),
-    catToggle = $('#responsive-nav .category-nav .category-header'),
-    catList = $('#responsive-nav .category-nav .category-list'),
+    catToggle = $('#responsive-nav .productCategory-nav .productCategory-header'),
+    catList = $('#responsive-nav .productCategory-nav .productCategory-list'),
     menuToggle = $('#responsive-nav .menu-nav .menu-header'),
     menuList = $('#responsive-nav .menu-nav .menu-list');
 

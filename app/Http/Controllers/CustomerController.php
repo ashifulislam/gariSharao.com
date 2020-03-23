@@ -7,15 +7,14 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
 
-    public function showCustomerHome()
+    public function __construct()
     {
-        return view('customer.customerHome');
+        $this->middleware('auth:customer');
     }
-public function getServiceHome(){
-        return view('customer.getServiceHome');
-}
-public  function ecommerce(){
-        return view('customer.epartsForCustomer');
-}
+    public function showCustomerHome(){
+      return view('customer.customerHome');
+    }
+
+
 
 }

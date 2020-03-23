@@ -184,7 +184,7 @@
     <!-- container -->
     <div class="container">
         <div id="responsive-nav">
-            <!-- category nav -->
+            <!-- productCategory nav -->
             <div class="category-nav">
                 <span class="category-header">Categories <i class="fa fa-list"></i></span>
                 <ul class="category-list">
@@ -378,7 +378,7 @@
                     <li><a href="#">View All</a></li>
                 </ul>
             </div>
-            <!-- /category nav -->
+            <!-- /productCategory nav -->
 
             <!-- menu nav -->
             <div class="menu-nav">

@@ -52,6 +52,10 @@ return [
             'driver'=>'session',
             'provider'=>'autoMobileEngineers',
         ],
+        'superAdmin'=>[
+            'driver'=>'session',
+            'provider'=>'superAdmins',
+        ],
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
@@ -83,7 +87,7 @@ return [
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => App\SuperAdmin::class,
         ],
         'customers' => [
             'driver' => 'eloquent',
@@ -92,6 +96,10 @@ return [
         'autoMobileEngineers' => [
             'driver' => 'eloquent',
             'model' => App\AutoMobileEngineer::class,
+        ],
+        'superAdmins' => [
+            'driver' => 'eloquent',
+            'model' => App\SuperAdmin::class,
         ],
 
         // 'users' => [
@@ -136,6 +144,12 @@ return [
         ],
         'autoMobileEngineers' => [
             'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'autoMobileEngineers' => [
+            'provider' => 'superAdmins',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

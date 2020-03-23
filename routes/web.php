@@ -17,16 +17,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('admin/home','AdminController@index');
-Route::get('admin','Admin\LoginController@showLoginForm')->name('admin.login');
-Route::post('admin','Admin\LoginController@login');
-Route::POST  ( 'admin-password/email','Admin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
-
-Route::GET('admin-password/reset','Admin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
-Route::POST('admin-password/reset','Admin\ResetPasswordController@reset');
-Route::GET('admin-password/reset/{token}','Admin\ResetPasswordController@showResetForm')->name('admin.password.reset');
-Route::get('/home','HomeController@home');
+//Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('admin/home','AdminController@index');
+//Route::get('admin','SuperAdmin\LoginController@showLoginForm')->name('admin.login');
+//Route::post('admin','SuperAdmin\LoginController@login');
+//Route::POST  ( 'admin-password/email','SuperAdmin\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
+//
+//Route::GET('admin-password/reset','SuperAdmin\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
+//Route::POST('admin-password/reset','SuperAdmin\ResetPasswordController@reset');
+//Route::GET('admin-password/reset/{token}','SuperAdmin\ResetPasswordController@showResetForm')->name('admin.password.reset');
+//Route::get('/home','HomeController@home');
 
 Route::group(['prefix'=>'customer'],function(){
 
@@ -51,13 +51,26 @@ Route::group(['prefix'=>'autoMobileEngineer'],function(){
 
     Route::get('logout', 'autoMobileEngineer\LoginController@logout')->name('autoMobileEngineer.logout');
 });
-Route::get('/autoMobileEngineerHome','autoMobileEngineer@showCustomerHome')->name('autoMobileEngineer.home');
+Route::get('/autoMobileEngineerHome','AutoMobileEngineerController@showAutoMobileEngineer')->name('autoMobileEngineer.home');
+
+Route::group(['prefix'=>'superAdmin'],function(){
+
+//    Route::get('/','EmployerController@index')->name('employer.home');
+    Route::get('/login', 'superAdmin\LoginController@showLoginForm')->name('superAdmin.login');
+    Route::post('/login', 'superAdmin\LoginController@login')->name('superAdmin.login.submit');
+    Route::get('/register', 'superAdmin\RegisterController@showRegForm')->name('superAdmin.register');
+
+    Route::post('/register', 'superAdmin\RegisterController@register')->name('superAdmin.register.submit');
+
+    Route::get('logout', 'superAdmin\LoginController@logout')->name('superAdmin.logout');
+});
+Route::get('/superAdminHome','SuperAdminController@showSuperAdmin')->name('superAdmin.home');
 
 //Route::get('/getServiceHome', function () {
 //    return view('customer.getServiceHome')->name('getService.home');
 //});
-Route::get('/getServiceHome','CustomerController@getServiceHome')->name('getService.home');
-Route::get('/epartsForCustomer','CustomerController@ecommerce')->name('epartsForCustomer.home');
+Route::get('/getServiceHome','ServiceController@getServiceHome')->name('getService.home');
+Route::get('/epartsForCustomer','EcommerceController@ecommerce')->name('epartsForCustomer.home');
 
 Route::get('/homeCheck', function () {
     return view('customer.homeCheck');
@@ -71,3 +84,5 @@ Route::get('/lendingCheck', function () {
 Route::get('/ecommerceHome', function () {
     return view('customer.ecommerceForCustomer');
 });
+
+Route::resource('productCategory','SuperAdmin\CategoryController');
